@@ -4,22 +4,33 @@ import java.util.function.Consumer;
 
 class Mailer {
     private Mailer print(String val) {
-        System.out.println(val); return this;
+        System.out.println(val);
+        return this;
     }
+
     public Mailer from(String addr) {
-        print("from"); return this;
+        print("from");
+        return this;
     }
+
     public Mailer to(String addr) {
-        print("to"); return this;
+        print("to");
+        return this;
     }
+
     public Mailer subject(String subjectLine) {
-        print("subject"); return this;
+        print("subject");
+        return this;
     }
+
     public Mailer body(String message) {
-        print("body"); return this;
+        print("body");
+        return this;
     }
+
     public static void send(Consumer<Mailer> block) {
-        Mailer mailer=new Mailer();
+        Mailer mailer = new Mailer();
+        // configuration generales
         block.accept(mailer);
         System.out.println("sending...");
     }

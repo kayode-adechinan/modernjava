@@ -1,12 +1,19 @@
 package com.tips.modernjava.demos;
 
+
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Function;
 
+@FunctionalInterface
+interface StringOperations{
+    String toUppercase(String  value);
+}
 
 public class Why {
 
     public static void main(String[] args) {
+
 
 
         class Product {
@@ -48,22 +55,14 @@ public class Why {
         Product p3 = new Product("xaomi", 120000);
 
         Product[] productArray = {p1, p2, p3};
-
-
-        Arrays.sort(productArray, new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                return o1.getPrice() - o2.getPrice();
-            }
-        });
-
-
-        // with lambda expression
-        Arrays.sort(productArray, (o1, o2) -> o1.getPrice() - o2.getPrice());
-
-
-        System.out.printf("Sorted products : %s",
-                Arrays.toString(productArray));
-
     }
+
+
+
+    public static void test(String value, StringOperations stringOperations){
+        String result = stringOperations.toUppercase(value);
+        System.out.println(result);
+    }
+
+
 }
